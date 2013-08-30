@@ -8,6 +8,7 @@ Description: Node.js is a platform built on Chrome's JavaScript runtime for easi
 Version: '0.10'
 License: MIT License
 License-Url: https://raw.github.com/joyent/node/v0.10/LICENSE
+Source-Url: https://github.com/lulinqing/openshift-cartridge-strongloop.git
 Vendor: www.nodejs.org
 Website: http://www.nodejs.org/
 Cartridge-Version: 0.0.4
