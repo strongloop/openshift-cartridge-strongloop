@@ -1,25 +1,26 @@
 ---
-Name: nodejs
-Cartridge-Short-Name: NODEJS
-Display-Name: Node.js 0.10
-Description: Node.js is a platform built on Chrome's JavaScript runtime for easily
-  building fast, scalable network applications. Node.js is perfect for data-intensive
-  real-time applications that run across distributed devices.
-Version: '0.10'
-License: MIT License
-License-Url: https://raw.github.com/joyent/node/v0.10/LICENSE
-Source-Url: https://github.com/lulinqing/openshift-cartridge-strongloop.git
-Vendor: www.nodejs.org
-Website: http://www.nodejs.org/
+Name: StrongLoop Suite 
+Cartridge-Short-Name: SLS
+Display-Name: SLS
+Description: StrongLoop Suite is an API tier for connecting Enterprise data to devices and browsers. The Suite includes an open source mobile framework, 
+a built-in monitoring and management console, all built on top of a certified distribution of Node.js.
+Version: '1.1.0'
+License: StrongLoop License
+License-Url: 
+Source-Url: 
+Vendor: www.strongloop.org
+Website: http://www.strongloop.org/
 Cartridge-Version: 0.0.4
 Compatible-Versions:
 - 0.0.2
 - 0.0.3
-Cartridge-Vendor: lulinqing
+Cartridge-Vendor: StrongLoop 
 Categories:
 - service
 - javascript
-- nodejs
+- nodej
+- mobile backend as a service
+- mBasS
 - web_framework
 Help-Topics:
   Developer Center: https://www.openshift.com/developers
