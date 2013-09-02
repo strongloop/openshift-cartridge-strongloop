@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/bootstrap/css/bootstrap-responsive.min.css"  rel="stylesheet" media="all" />
+  <link href="css/blog.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+</head>
+
+<body>
+  <!-- ==== Navbar ================================================== -->
+  <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+      </div>
+       <img src="images/strongloop.png" height=35% width=35%/>
+       <p class="lead">Sample Blog Application.</p>
+    </div>
+
+    <div class="container">
+
+    <form class="form-signin" method="get" action="/logout">
+	
+      <h2 class="form-signin-heading">My account</h2>
+<p>Id: <%= user.id %></p>
+<p>Name: <%= user.username %></p>
+      <button class="btn btn-large btn-danger" type="submit">Sign out</button>
+    </form>
+
+    </div> <!-- /container -->
+<!--
+    <script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.min.js"></script>
+-->
+	
+  </body>
+</html>
+

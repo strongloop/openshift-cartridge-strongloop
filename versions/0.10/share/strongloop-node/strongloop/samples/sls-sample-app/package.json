@@ -1,0 +1,36 @@
+{
+  "name": "loopback-sample-app",
+  "version": "0.0.1",
+  "description": "Sample LoopBack Application",
+  "main": "app.js",
+  "dependencies": {
+    "loopback": "git+ssh://git@github.com/strongloop/loopback.git",
+    "loopback-connector-rest": "git+ssh://git@github.com/strongloop/loopback-connector-rest.git",
+    "request": "~2.21.0",
+    "strong-task-emitter": "0.0.x",
+    "mocha": "~1.8.2",
+    "rc": "~0.3.0"
+  },
+  "optionalDependencies": {
+    "loopback-connector-oracle": "git+ssh://git@github.com/strongloop/loopback-connector-oracle.git",
+    "loopback-connector-mongodb": "git+ssh://git@github.com/strongloop/loopback-connector-mongodb.git"
+  },
+  "devDependencies": {
+    "supertest": "latest",
+    "blanket": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strongloop/loopback-sample-app.git"
+  },
+  "scripts": {
+    "test": "mocha -b -R spec",
+    "blanket": {
+      "pattern": "//^((?!(node_modules|test)).)*$/"
+    },
+    "coverage": "mocha -r blanket -R html-cov > coverage_loopback-sample-app.html"
+  },
+  "author": "Ritchie Martori",
+  "private": true,
+  "readmeFilename": "README.md"
+}

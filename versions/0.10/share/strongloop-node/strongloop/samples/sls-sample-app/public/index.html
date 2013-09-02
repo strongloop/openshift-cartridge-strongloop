@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LoopBack Sample Application</title>
+    <link rel="stylesheet" href="/explorer/css/screen.css">
+</head>
+<body>
+    <div id='header'>
+        <div class="swagger-ui-wrap">
+            <a id="logo" href="/">LoopBack Sample Application</a>
+        </div>
+    </div>
+    <div id="swagger-ui-container" class="swagger-ui-wrap">
+        <h2>API Explorer</h2>
+        <p>To experiment with the complete REST API and its documentation, see the <a href="/explorer">API Explorer</a>.</p>
+        <h2>Example Queries</h2>
+        <ul>
+            <li><a href='/weapons'>Weapons</a></li>
+            <li><a href='/weapons/2'>A weapon by id</a></li>
+            <li><a href='/weapons?filter[limit]=2&filter[offset]=5'>Paginated Weapons</a></li>
+            <li><a href='/weapons?filter[where][name]=M1911'>Weapons with name M1911</a></li>
+            <li><a href='/weapons?filter[where][audibleRange][lt]=10'>Weapons with audioRange < 10</a></li>
+            <li><a href='/weapons?filter[fields][name]=1&filter[fields][effectiveRange]=1'>Only name and effective ranges</a></li>
+            <li><a href='/weapons?filter[where][effectiveRange][gt]=900&filter[limit]=3'>The top 3 weapons with a range over 900 meters</a></li>
+            <li><a href='/weapons?filter[order]=audibleRange%20DESC&filter[limit]=3'>The loudest 3 weapons</a></li>
+
+            <li><a href='/locations'>Locations</a></li>
+            <li><a href='/locations/nearby?here[lat]=37.587409&here[lng]=-122.338225'>Locations nearby</a></li>
+            <li><a href='/locations?filter[where][geo][near]=153.536,-28.1&filter[limit]=3'>The 3 closest locations to a given geo point</a></li>
+            <li><a href='/locations/87/inventory'>The inventory for store 87</a></li>
+        </ul>
+        <h2>LoopBack Metadata</h2>
+        <ul>
+            <li><a href='/routes'>Routes</a></li>
+        </ul>
+    </div>
+</body>
+</html>

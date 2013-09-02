@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/bootstrap/css/bootstrap-responsive.min.css"  rel="stylesheet" media="all" />
+  <link href="css/blog.css" rel="stylesheet">
+
+  <title><%= title %></title>
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+</head>
+
+<body>
+
+  <!-- ==== Navbar ================================================== -->
+  <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="/post">New Post</a></li>
+          <li class="active"><a href="/account">Account</a></li>
+        </ul>
+        <img src="images/strongloop.png" height=35% width=35%/>
+        <p class="lead">Sample Blog Application.</p>
+      </div>
+      <hr>
+  </div>
+
+<!-- ==== Main Contents ============================================ -->
+<div class="container-narrow">
+  <br/>
+  <br/>
+
+	<% blogs.forEach( function(blog){ %>
+	<p>
+		<div class="post">
+			<h2><%= blog.title %></h2>
+		</div>
+		<span class="underlined"></span>
+		<br/>
+		<%=: blog.date | displayDate %> by <%= blog.author %>
+		<br/>
+		<br/>
+		<div class="entry">
+			<%= blog.body %> <br/>
+		</div>
+		</br>
+		<%= blog.tags %> <br/>
+
+
+    <% if(blog.comments) { %>
+      <span class="underlined"></span>
+      <br/>
+      <% blog.comments.forEach( function(comment){ %>
+        <strong><%= comment.author %> </strong>
+        <br/>
+        <%= comment.body %>
+        <br/>
+        <br/>
+      <% }); %>
+    <% } %>
+
+
+    <div id="comments">
+      <form action="/postComment" method="POST" class="form-horizontal">
+        <meta itemprop="postId" content="<%= blog.id %>"/>
+        <fieldset>
+            <input type="hidden" name="postId" value="<%= blog._id %>" /><br />
+            <textarea id="body" name="body" placeholder="Enter your comment here..."  rows="5" class="span8" ></textarea>
+            </br>
+            </br>
+            <button type="publish" class="btn btn-mini">Publish</button>
+            <button type="cancel" class="btn btn-mini">Cancel</button>
+        </fieldset>
+        <br/>
+      </form>
+    </div>
+
+		<p style="text-align: center;">
+			<span class="hex">⬢</span>
+			<span class="hex">⬢</span>
+			<span class="hex">⬢</span>
+		</p>
+	</p>
+  <% }); %>
+  <br/>
+  <br/>
+
+</div>
+
+</body>
+</html>

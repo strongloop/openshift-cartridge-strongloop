@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="assets/bootstrap/css/bootstrap-responsive.min.css"  rel="stylesheet" media="all" />
+  <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="css/blog.css" rel="stylesheet">
+
+  <title><%= title %></title>
+
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+</head>
+
+<body>
+
+  <!-- ==== Navbar ================================================== -->
+  <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="/">Home</a></li>
+          <li class="active"><a href="/account">Account</a></li>
+        </ul>
+        <img src="images/strongloop.png" height=35% width=35%/>
+        <p class="lead">Sample Blog Application.</p>
+      </div>
+      <hr>
+  </div>
+
+<!-- ==== Main Contents ============================================ -->
+<div class="container-narrow">
+  <br/>
+  <br/>
+
+  <form action="/post" method="POST" class="form-horizontal">
+    <fieldset>
+        <legend>New Blog Post</legend>
+        <p>Author <a href='/account'><%= author %></a></p>
+        <label>Title</label>
+        <input class="span8" id="title" name="title" type="text" placeholder="Type something…">
+        </br>
+        </br>
+        <textarea class="span8" id="body" name="body" rows="15"></textarea>
+        </br>
+        </br>
+        <button type="submit" class="btn">Save</button>
+    </fieldset>
+  </form>
+  
+  <br/>
+  <br/>
+
+</div>
+
+</body>
+</html>

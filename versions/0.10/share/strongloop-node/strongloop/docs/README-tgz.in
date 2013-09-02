@@ -1,0 +1,10 @@
+## StrongLoop Suite
+
+You've downloaded the TGZ version of $PKG_NAME.
+
+To use this package, you may either:
+ * Run the binaries directly from $DIRNAME/bin
+ * Add $DIRNAME/bin to your $PATH
+ * Move $DIRNAME to somewhere like /opt and then add /opt/$DIRNAME/bin to your $PATH
+
+For more information please visit http://docs.strongloop.com/
