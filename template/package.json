@@ -32,7 +32,7 @@
   "main": "server.js",
 
   "scripts":{
-    "start":"cd $OPENSHIFT_REPO_DIR && slc server.js"
+    "start":"node server.js"
   }
 
 }
