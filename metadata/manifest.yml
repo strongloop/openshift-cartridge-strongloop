@@ -7,11 +7,11 @@ Versions: ['1.2', '0.10', '0.6']
 Source-Url: https://github.com/lulinqing/openshift-cartridge-strongloop.git
 License: MIT License
 License-Url: https://raw.github.com/joyent/node/v0.6/LICENSE
-Vendor: www.nodejs.org
-Website: "http://www.nodejs.org/"
+Vendor: strongloop
+Website: "http://www.strongloop.com/"
 Install-Build-Required: true
-Cartridge-Version: 0.0.1
-Cartridge-Vendor: StrongLoop 
+Cartridge-Version: 1.2.0
+Cartridge-Vendor: strongloop 
 Categories:
   - service
   - javascript
