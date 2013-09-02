@@ -8,11 +8,11 @@ esac
 
 if [[ "$version" == "1.2" ]]
 then
-    ln -sf $OPENSHIFT_NODEJS_DIR/versions/0.10/bin/node $OPENSHIFT_NODEJS_DIR/bin/node/
-    ln -sf $OPENSHIFT_NODEJS_DIR/versions/0.10/bin/npm $OPENSHIFT_NODEJS_DIR/bin/node/
-    ln -sf $OPENSHIFT_NODEJS_DIR/versions/0.10/bin/slc $OPENSHIFT_NODEJS_DIR/bin/node/
-    ln -sf $OPENSHIFT_NODEJS_DIR/versions/0.10/bin/slnode $OPENSHIFT_NODEJS_DIR/bin/node/
-    ln -sf $OPENSHIFT_NODEJS_DIR/versions/0.10/bin/lb  $OPENSHIFT_NODEJS_DIR/bin/node/
+    ln -sf $OPENSHIFT_NODEJS_DIR/versions/$version/bin/node $OPENSHIFT_NODEJS_DIR/bin/node/
+    ln -sf $OPENSHIFT_NODEJS_DIR/versions/$version/bin/npm $OPENSHIFT_NODEJS_DIR/bin/node/
+    ln -sf $OPENSHIFT_NODEJS_DIR/versions/$version/bin/slc $OPENSHIFT_NODEJS_DIR/bin/node/
+    ln -sf $OPENSHIFT_NODEJS_DIR/versions/$version/bin/slnode $OPENSHIFT_NODEJS_DIR/bin/node/
+    ln -sf $OPENSHIFT_NODEJS_DIR/versions/$version/bin/lb  $OPENSHIFT_NODEJS_DIR/bin/node/
 else
     if [[ -f $OPENSHIFT_NODEJS/bin/node/node ]] ; then
       rm $OPENSHIFT_NODEJS_DIR/bin/node/node
