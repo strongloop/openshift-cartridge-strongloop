@@ -32,7 +32,7 @@
   "main": "server.js",
 
   "scripts":{
-    "start":"node server.js"
+    "start":"slc server.js"
   }
 
 }
