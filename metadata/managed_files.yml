@@ -4,14 +4,8 @@ locked_files:
 - bin/*
 - metadata/
 - metadata/*
-- hooks/
-- hooks/*
 - env/
 - env/*
-- lib/
-- lib/*
 - etc/
 processed_templates:
 - '**/*.erb'
-setup_rewritten:
-- 'versions/**/*'

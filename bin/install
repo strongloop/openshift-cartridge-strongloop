@@ -6,13 +6,31 @@ case "$1" in
     version="$2"
 esac
 
+if [[ "$version" == "1.2" ]]
+then
+    ln -sf $OPENSHIFT_NODEJS_DIR/versions/1.2/bin/node $OPENSHIFT_NODEJS_DIR/bin/node/
+    ln -sf $OPENSHIFT_NODEJS_DIR/versions/1.2/bin/npm $OPENSHIFT_NODEJS_DIR/bin/node/
+    ln -sf $OPENSHIFT_NODEJS_DIR/versions/1.2/bin/slc $OPENSHIFT_NODEJS_DIR/bin/node/
+    ln -sf $OPENSHIFT_NODEJS_DIR/versions/1.2/bin/slnode $OPENSHIFT_NODEJS_DIR/bin/node/
+    ln -sf $OPENSHIFT_NODEJS_DIR/versions/0.10/bin/lb $OPENSHIFT_NODEJS_DIR/bin/node/
+else
+    if [[ -f $OPENSHIFT_NODEJS/bin/node/node ]] ; then
+      rm $OPENSHIFT_NODEJS_DIR/bin/node/node
+    fi
+    if [[ -f $OPENSHIFT_NODEJS/bin/node/npm ]] ; then
+      rm $OPENSHIFT_NODEJS_DIR/bin/node/npm
+    fi
+fi
+
 ## npm link
 pushd $OPENSHIFT_NODEJS_DIR > /dev/null
-  mkdir -p node_modules
   npmgl=$OPENSHIFT_NODEJS_DIR/versions/$version/configuration/npm_global_module_list
   module_list=$(perl -ne 'print if /^\s*[^#\s]/' "$npmgl" | tr '\n' ' ')
-  npm link $module_list >/dev/null 2>&1
-  mv node_modules $OPENSHIFT_HOMEDIR/.node_modules
+  if [[ "$version" == "0.6" ]] ; then
+    mkdir -p node_modules
+    npm link $module_list >/dev/null 2>&1
+    mv node_modules $OPENSHIFT_HOMEDIR/.node_modules
+  fi
 popd > /dev/null
 
 # npm keeps per-user config in ~/.npmrc and cache in ~/.npm/  and
@@ -21,6 +39,7 @@ popd > /dev/null
 touch "$OPENSHIFT_HOMEDIR"/.npmrc
 mkdir "$OPENSHIFT_HOMEDIR"/.npm
 mkdir "$OPENSHIFT_HOMEDIR"/.node-gyp
-chown `id -u $OPENSHIFT_GEAR_UUID` -R "$OPENSHIFT_HOMEDIR"/.npm "$OPENSHIFT_HOMEDIR"/.npmrc  \
+chown $OPENSHIFT_APP_UUID.$OPENSHIFT_APP_UUID -R "$OPENSHIFT_HOMEDIR"/.npm "$OPENSHIFT_HOMEDIR"/.npmrc  \
                             "$OPENSHIFT_HOMEDIR"/.node-gyp
 npm config set tmp $OPENSHIFT_TMP_DIR
+
