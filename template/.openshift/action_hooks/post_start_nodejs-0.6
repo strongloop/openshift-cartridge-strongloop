@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# The pre_start_cartridge and pre_stop_cartridge hooks are *SOURCED*
+# immediately before (re)starting or stopping the specified cartridge.
+# They are able to make any desired environment variable changes as
+# well as other adjustments to the application environment.
+
+# The post_start_cartridge and post_stop_cartridge hooks are executed
+# immediately after (re)starting or stopping the specified cartridge.
+
+# Exercise caution when adding commands to these hooks.  They can
+# prevent your application from stopping cleanly or starting at all.
+# Application start and stop is subject to different timeouts
+# throughout the system.
+
+
+#  Wait a bit to give the server time to come up.
+sleep 5
+
+#  Check if the app_uri is available - user code could have removed the
+#  one in the sample -- we just print this for sanity testing.
+app_uri="http://$OPENSHIFT_GEAR_DNS/"
+zcode=$(curl --write-out %{http_code} -s -o /dev/null "$app_uri")
+echo ""
+echo "  - App URI = $app_uri"
+echo "  - Got an HTTP response code of $zcode when pinging the app URI"
+echo ""
+
