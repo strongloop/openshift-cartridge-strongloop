@@ -24,3 +24,4 @@ node-static
 qs
 supervisor
 traverse
+npmlog
