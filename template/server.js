@@ -1,10 +1,4 @@
 #!/bin/env node
-
-require('nodefly').profile(
-    process.env.NODEFLY_APPLICATION_KEY,
-    ['StrongLoop', process.env.STRONGLOOP_PLATFORM]
-);
-
 var express = require('express');
 
 var slutils = require('./lib/utils/slutils.js');
