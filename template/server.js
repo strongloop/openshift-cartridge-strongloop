@@ -53,9 +53,9 @@ var StrongLoopApp = function() {
     } catch(err) {
     }
 
-    self.ipaddress = process.env.OPENSHIFT_NODEJS_IP ||
+    self.ipaddress = process.env.OPENSHIFT_SLS_IP ||
                      process.env.VCAP_HOST || '0.0.0.0';
-    self.port      = process.env.OPENSHIFT_NODEJS_PORT ||
+    self.port      = process.env.OPENSHIFT_SLS_PORT ||
                      process.env.VCAP_PORT  || process.env.PORT || 3000;
     self.app_name  = cfg.name || 'StrongLoop-Sample-App';
 

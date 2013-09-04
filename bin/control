@@ -29,8 +29,8 @@ DEPRECATED
 }
 
 function is_node_service_running() {
-    if [ -f $OPENSHIFT_NODEJS_PID_DIR/node.pid ]; then
-        node_pid=$( cat $OPENSHIFT_NODEJS_PID_DIR/node.pid 2> /dev/null )
+    if [ -f $OPENSHIFT_SLS_PID_DIR/node.pid ]; then
+        node_pid=$( cat $OPENSHIFT_SLS_PID_DIR/node.pid 2> /dev/null )
         myid=$( id -u )
         if `ps --pid $node_pid 2>&1 | grep node > /dev/null 2>&1`  ||  \
            `pgrep -x node -u $myid > /dev/null 2>&1`; then
@@ -45,7 +45,7 @@ function is_node_service_running() {
 function is_node_module_installed() {
     module_name=${1:-""}
     if [ -n "$module_name" ]; then
-        pushd "$OPENSHIFT_NODEJS_DIR" > /dev/null
+        pushd "$OPENSHIFT_SLS_DIR" > /dev/null
         if [ -d $m ] ; then
             popd > /dev/null
             return 0
@@ -84,8 +84,8 @@ NODE_EOF
 
 
 function start() {
-    envf="$OPENSHIFT_NODEJS_DIR/configuration/node.env"
-    logf="$OPENSHIFT_NODEJS_LOG_DIR/node.log"
+    envf="$OPENSHIFT_SLS_DIR/configuration/node.env"
+    logf="$OPENSHIFT_SLS_LOG_DIR/node.log"
 
     #  Source environment if it exists.
     [ -f "$envf" ]  &&  source "$envf"
@@ -124,7 +124,7 @@ function start() {
     npid=$!
     popd > /dev/null
     if [ $ret -eq 0 ]; then
-        echo "$npid" > "$OPENSHIFT_NODEJS_PID_DIR/node.pid"
+        echo "$npid" > "$OPENSHIFT_SLS_PID_DIR/node.pid"
     else
         echo "Application '$OPENSHIFT_APP_NAME' failed to start - $ret" 1>&2
         exit $ret
@@ -134,12 +134,12 @@ function start() {
 
 
 function stop() {
-    if [ -f $OPENSHIFT_NODEJS_PID_DIR/node.pid ]; then
-        node_pid=$( cat $OPENSHIFT_NODEJS_PID_DIR/node.pid 2> /dev/null )
+    if [ -f $OPENSHIFT_SLS_PID_DIR/node.pid ]; then
+        node_pid=$( cat $OPENSHIFT_SLS_PID_DIR/node.pid 2> /dev/null )
     fi
 
     if [ -n "$node_pid" ]; then
-        logf="$OPENSHIFT_NODEJS_LOG_DIR/node.log"
+        logf="$OPENSHIFT_SLS_LOG_DIR/node.log"
         echo "`date +"$FMT"`: Stopping application '$OPENSHIFT_APP_NAME' ..." >> $logf
         /bin/kill $node_pid
         ret=$?
@@ -158,7 +158,7 @@ function stop() {
         fi
 
         echo "`date +"$FMT"`: Stopped Node application '$OPENSHIFT_APP_NAME'" >> $logf
-        rm -f $OPENSHIFT_NODEJS_PID_DIR/node.pid
+        rm -f $OPENSHIFT_SLS_PID_DIR/node.pid
     else
         if `pgrep -x node -u $(id -u)  > /dev/null 2>&1`; then
             echo "Warning: Application '$OPENSHIFT_APP_NAME' Node server exists without a pid file.  Use force-stop to kill." 1>&2
@@ -174,18 +174,18 @@ function restart() {
 }  #  End of function  restart.
 
 function build() {
-    if [ -d "${OPENSHIFT_NODEJS_DIR}/tmp/saved.node_modules" ]; then
+    if [ -d "${OPENSHIFT_SLS_DIR}/tmp/saved.node_modules" ]; then
         node_modules_dir="${OPENSHIFT_REPO_DIR}node_modules/"
-        for d in `ls -a ${OPENSHIFT_NODEJS_DIR}/tmp/saved.node_modules`; do
+        for d in `ls -a ${OPENSHIFT_SLS_DIR}/tmp/saved.node_modules`; do
             [ -e "${node_modules_dir}$d" ]  ||  \
-                mv "${OPENSHIFT_NODEJS_DIR}/tmp/saved.node_modules/$d" "$node_modules_dir"
+                mv "${OPENSHIFT_SLS_DIR}/tmp/saved.node_modules/$d" "$node_modules_dir"
         done
-        rm -rf "${OPENSHIFT_NODEJS_DIR}/tmp/saved.node_modules"
+        rm -rf "${OPENSHIFT_SLS_DIR}/tmp/saved.node_modules"
     fi
 
     if [ -f "${OPENSHIFT_REPO_DIR}/.openshift/markers/force_clean_build" ]; then
         echo ".openshift/markers/force_clean_build found!  Recreating npm modules" 1>&2
-        rm -rf "${OPENSHIFT_NODEJS_DIR}"/node_modules/*
+        rm -rf "${OPENSHIFT_SLS_DIR}"/node_modules/*
         rm -rf "${OPENSHIFT_HOMEDIR}"/.npm/*
         rm -rf "${OPENSHIFT_REPO_DIR}"node_modules/*
     fi
@@ -200,9 +200,9 @@ function build() {
             echo "Checking npm module: $m"
             echo
             if is_node_module_installed "$m"; then
-                (cd "${OPENSHIFT_NODEJS_DIR}"; npm update "$m")
+                (cd "${OPENSHIFT_SLS_DIR}"; npm update "$m")
             else
-                (cd "${OPENSHIFT_NODEJS_DIR}"; npm install "$m")
+                (cd "${OPENSHIFT_SLS_DIR}"; npm install "$m")
             fi
         done
     fi
@@ -222,10 +222,10 @@ function build() {
 
 function is_supervisor_running() {
     #  Have a pid file, use it - otherwise return not supervisor.
-    [ -f "$OPENSHIFT_NODEJS_PID_DIR/node.pid" ]  ||  return 1
+    [ -f "$OPENSHIFT_SLS_PID_DIR/node.pid" ]  ||  return 1
 
     #  Have a valid pid, use it - otherwise return not supervisor.
-    nodepid=$(cat "${OPENSHIFT_NODEJS_PID_DIR}/node.pid")
+    nodepid=$(cat "${OPENSHIFT_SLS_PID_DIR}/node.pid")
     [ -n "$nodepid" ]  ||  return 1
 
     #  Is the pid a supervisor process.
@@ -249,23 +249,23 @@ function post-deploy() {
 }
 
 function pre-build() {
-    rm -rf ${OPENSHIFT_NODEJS_DIR}/tmp/{node_modules,saved.node_modules}
+    rm -rf ${OPENSHIFT_SLS_DIR}/tmp/{node_modules,saved.node_modules}
 
     # If the node_modules/ directory exists, then "stash" it away for redeploy.
     node_modules_dir="${OPENSHIFT_REPO_DIR}node_modules"
     if [ -d "$node_modules_dir" ]; then
       echo 'Saving away previously installed Node modules'
-      mv "$node_modules_dir" "${OPENSHIFT_NODEJS_DIR}/tmp/saved.node_modules"
+      mv "$node_modules_dir" "${OPENSHIFT_SLS_DIR}/tmp/saved.node_modules"
       mkdir -p "$node_modules_dir"
     fi
 }
 
 # Clean up any log files
 function tidy() {
-  client_message "Emptying log dir: $OPENSHIFT_NODEJS_LOG_DIR"
+  client_message "Emptying log dir: $OPENSHIFT_SLS_LOG_DIR"
   shopt -s dotglob
-  rm -rf $OPENSHIFT_NODEJS_LOG_DIR/*
-  rm -rf ${OPENSHIFT_NODEJS_DIR}tmp/*
+  rm -rf $OPENSHIFT_SLS_LOG_DIR/*
+  rm -rf ${OPENSHIFT_SLS_DIR}tmp/*
 }
 
 #

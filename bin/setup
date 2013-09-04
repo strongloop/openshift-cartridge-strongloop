@@ -6,7 +6,7 @@ case "$1" in
 esac
 
 # Parse arguments
-source "${OPENSHIFT_NODEJS_DIR}/lib/util"
+source "${OPENSHIFT_SLS_DIR}/lib/util"
 parse_args $@
 
 # Don't set -u until after the above arg parsing is complete
@@ -15,12 +15,12 @@ set -u
 # Copy the version specific files to nodejs directory
 shopt -s dotglob
 for dir in configuration etc; do
-    mkdir -p $OPENSHIFT_NODEJS_DIR/$dir
-    cp -Lr $OPENSHIFT_NODEJS_DIR/versions/$version/$dir/* $OPENSHIFT_NODEJS_DIR/$dir 
+    mkdir -p $OPENSHIFT_SLS_DIR/$dir
+    cp -Lr $OPENSHIFT_SLS_DIR/versions/$version/$dir/* $OPENSHIFT_SLS_DIR/$dir 
 done
 
 ###
-pushd $OPENSHIFT_NODEJS_DIR > /dev/null
+pushd $OPENSHIFT_SLS_DIR > /dev/null
 for dir in conf logs sessions run tmp; do
 	mkdir -p $dir
 done
