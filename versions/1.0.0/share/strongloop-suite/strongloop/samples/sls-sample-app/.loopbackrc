@@ -1,0 +1,20 @@
+{
+    "demo": {
+        "memory": {},
+        "oracle": {
+            "host": "demo.strongloop.com",
+            "port": 1521,
+            "database": "XE",
+            "username": "demo",
+            "password": "L00pBack"
+        },
+        "mongodb": {
+            "host": "demo.strongloop.com",
+            "database": "demo",
+            "username": "demo",
+            "password": "L00pBack",
+            "port": 27017
+        }
+    }
+}
+

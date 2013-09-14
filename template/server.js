@@ -46,17 +46,15 @@ var StrongLoopApp = function() {
    */
   self._loadConfig = function() {
     /*  Only thing we really need is the app name.  */
-    var cfg = { name: 'StrongLoop-SampleApp' };
+    var cfg = { name: 'StrongLoop-Sample-App' };
 
     try { 
       cfg = require('./package.json');
     } catch(err) {
     }
 
-    self.ipaddress = process.env.OPENSHIFT_SLS_IP ||
-                     process.env.VCAP_HOST || '0.0.0.0';
-    self.port      = process.env.OPENSHIFT_SLS_PORT ||
-                     process.env.VCAP_PORT  || process.env.PORT || 3000;
+    self.ipaddress = process.env.OPENSHIFT_SLS_IP || '0.0.0.0';
+    self.port      = process.env.OPENSHIFT_SLS_PORT || process.env.PORT || 3000;
     self.app_name  = cfg.name || 'StrongLoop-Sample-App';
 
     NODEFLY_API_TOKEN && self._enableProfiling();

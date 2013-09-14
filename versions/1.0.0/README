@@ -1,0 +1,10 @@
+## StrongLoop Suite
+
+You've downloaded the TGZ version of strongloop-suite-1.0.0-1.el6.x86_64.rpm.
+
+To use this package, you may either:
+ * Run the binaries directly from strongloop-suite-1.0.0-1.el6.x86_64/bin
+ * Add strongloop-suite-1.0.0-1.el6.x86_64/bin to your $PATH
+ * Move strongloop-suite-1.0.0-1.el6.x86_64 to somewhere like /opt and then add /opt/strongloop-suite-1.0.0-1.el6.x86_64/bin to your $PATH
+
+For more information please visit http://docs.strongloop.com/

@@ -1,0 +1,27 @@
+{
+  "name": "sn-example-blog",
+  "version": "0.0.1",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "test": "./node_modules/mocha/bin/mocha --timeout 30000 --reporter spec test/*-mocha.js --noAuth --noSetup"
+  },
+  "dependencies": {
+    "express": "latest",
+    "ejs": "latest",
+    "mongoose": "latest",
+    "passport": "latest",
+    "passport-local": "latest",
+    "connect-ensure-login": "latest",
+    "strong-cluster-control": "~0.1.0",
+    "strong-agent": "~0.2.11"
+  },
+  "devDependencies": {
+    "mocha": "latest",
+    "should": "latest",
+    "supertest": "latest",
+    "underscore": "latest"
+  },
+  "license": "MIT"
+}

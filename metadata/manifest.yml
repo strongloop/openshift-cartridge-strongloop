@@ -2,15 +2,15 @@ Name: strongloop
 Cartridge-Short-Name: SLS
 Display-Name: StrongLoop Suite 
 Description: "StrongLoop Suite is an open source API tier for connecting Enterprise data to devices and browsers. Components include Loopback, StrongOps and StrongNode. LoopBack is an open source mobile framework, including mobile SDKs. StrongOps is the operational console specifically for StrongLoop Suite and Node.js, enabling deep performance monitoring including CPU profiling and EventLoop stats. Also included is StrongNode, a supported package of Node.js, containing certified and tested modules for developing, configuring, testing, deploying, and maintaining enterprise Node.js applications including advanced debugging, clustering, private npm registries and other enterprise tools."
-Version: "1.2"
-Versions: ['1.2', '0.10', '0.6']
+Version: "1.0.0"
+Versions: ['1.0.0']
 Source-Url: https://github.com/lulinqing/openshift-cartridge-strongloop.git
 License: StrongLoop License
 License-Url:
-Vendor: www.strongloop.com
-Website: "http://www.strongloop.com/"
+Vendor: strongloop.com
+Website: "http://strongloop.com/"
 Install-Build-Required: true
-Cartridge-Version: 1.2.0
+Cartridge-Version: 1.0.0
 Cartridge-Vendor: strongloop 
 Categories:
   - service

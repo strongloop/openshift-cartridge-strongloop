@@ -29,15 +29,15 @@ exports.getRoutes = function() {
       zenv += k + ': ' + process.env[k] + '\n';
     });
 
-    var zheading = 'Yo - Welcome to StrongLoop Node';
-    if (process.env.STRONGLOOP_PLATFORM != 'Local') {
-      zheading += ' on ' + process.env.STRONGLOOP_PLATFORM;
-    }
+    var zheading = 'Yo - Welcome to StrongLoop Suite on OpenShift';
+    //if (process.env.STRONGLOOP_PLATFORM != 'Local') {
+    //  zheading += ' on ' + process.env.STRONGLOOP_PLATFORM;
+    //}
 
     return res.render('index', {
        title:    'Hello StrongLoop',
        heading:  zheading,
-       platform: process.env.STRONGLOOP_PLATFORM,
+       platform: 'OpenShift',
        versions: zvers,
        env:      zenv
     });

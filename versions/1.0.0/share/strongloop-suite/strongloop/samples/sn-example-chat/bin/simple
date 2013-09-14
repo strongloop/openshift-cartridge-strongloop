@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+// Disable clustering, env can only only be over-ridden by command line
+process.env.cluster_size = "off";
+
+require('../app')();

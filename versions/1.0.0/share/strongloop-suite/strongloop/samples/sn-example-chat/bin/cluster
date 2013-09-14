@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+// Default clustering to on, it can still be over-ridden by config, env, or
+// command line
+var options = {
+  size: 'default'
+};
+
+require('../app')(options);

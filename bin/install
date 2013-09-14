@@ -6,21 +6,21 @@ case "$1" in
     version="$2"
 esac
 
-if [[ "$version" == "1.2" ]]
-then
+#if [[ "$version" == "1.0.0" ]]
+#then
     ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/node $OPENSHIFT_SLS_DIR/bin/node/
     ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/npm $OPENSHIFT_SLS_DIR/bin/node/
     ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/slc $OPENSHIFT_SLS_DIR/bin/node/
     ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/slnode $OPENSHIFT_SLS_DIR/bin/node/
     ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/lb  $OPENSHIFT_SLS_DIR/bin/node/
-else
-    if [[ -f $OPENSHIFT_SLS/bin/node/node ]] ; then
-      rm $OPENSHIFT_SLS_DIR/bin/node/node
-    fi
-    if [[ -f $OPENSHIFT_SLS/bin/node/npm ]] ; then
-      rm $OPENSHIFT_SLS_DIR/bin/node/npm
-    fi
-fi
+#else
+#    if [[ -f $OPENSHIFT_SLS/bin/node/node ]] ; then
+#      rm $OPENSHIFT_SLS_DIR/bin/node/node
+#    fi
+#    if [[ -f $OPENSHIFT_SLS/bin/node/npm ]] ; then
+#      rm $OPENSHIFT_SLS_DIR/bin/node/npm
+#    fi
+#fi
 
 ## npm link
 pushd $OPENSHIFT_SLS_DIR > /dev/null
