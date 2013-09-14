@@ -38,7 +38,7 @@ exports.getRoutes = function() {
        title:    'Hello StrongLoop',
        heading:  zheading,
        platform: 'OpenShift',
-       versions: zvers,
+       //versions: zvers,
        env:      zenv
     });
   };
