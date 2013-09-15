@@ -1,43 +1,17 @@
 #!/bin/env node
+
+require('strong-agent').profile();
+
 var express = require('express');
 
 var slutils = require('./lib/utils/slutils.js');
 var routes  = require('./lib/routes/routes.js');
-
-/**
- *  For profiling with nodefly. Also add nodefly to package.json
- *  and for CloudFoundry, regenerate npm-shrinkwrap.json
- */
-var NODEFLY_API_TOKEN = '';
-
 
 /*!  {{{ section: 'API-Functions'  */
 
 var StrongLoopApp = function() {
   /*  Scope.  */
   var self = this;
-
-
-  /**
-   *  Enable app profiling if Nodefly token is set.
-   *
-   *  @api  private
-   */
-  self._enableProfiling = function() {
-    if (! NODEFLY_API_TOKEN) {
-      slutils.log_message('No API token - profiler disabled.');
-      return;
-    }
-
-    try {
-      require('nodefly').profile(NODEFLY_API_TOKEN, self.app_name);
-    } catch(err) { 
-      slutils.log_message('ERROR enabling profiling - details=%s', err);
-      slutils.log_message('Running app with profiler disabled.');
-    }
-
-  };  /*  End of function  _enableProfiling.  */
-
 
   /**
    *  Load app configuration and setup information we need to run the app.
@@ -56,8 +30,6 @@ var StrongLoopApp = function() {
     self.ipaddress = process.env.OPENSHIFT_SLS_IP || '0.0.0.0';
     self.port      = process.env.OPENSHIFT_SLS_PORT || process.env.PORT || 3000;
     self.app_name  = cfg.name || 'StrongLoop-Sample-App';
-
-    NODEFLY_API_TOKEN && self._enableProfiling();
 
   };  /*  End of function  loadConfig.  */
 

@@ -18,13 +18,12 @@
   },
 
   "dependencies": {
+    "strong-agent": "latest",
     "ejs":       "latest",
     "express":   "latest"
   },
 
   "devDependencies": {
-    "ejs":       "latest",
-    "express":   "latest"
   },
 
   "bundleDependencies": [],
