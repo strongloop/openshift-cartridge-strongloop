@@ -18,7 +18,15 @@ a[name] {
   max-width: 700px;
 }
 
+.hide-mobile {
+  display: none;
+}
+
 @media (min-width: 992px) {
+  .hide-mobile {
+    display: inherit;
+  }
+
   .column {
     position: absolute;
     top: 52px;
