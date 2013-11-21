@@ -1,0 +1,89 @@
+{
+  "name": "Product",
+  "options": {
+    "idInjection": false,
+    "oracle": {
+      "schema": "BLACKPOOL",
+      "table": "PRODUCT"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "String",
+      "length": 20,
+      "id": 1,
+      "oracle": {
+        "columnName": "ID",
+        "dataType": "VARCHAR2",
+        "dataLength": 20,
+        "nullable": "N"
+      }
+    },
+    "name": {
+      "type": "String",
+      "required": false,
+      "length": 64,
+      "oracle": {
+        "columnName": "NAME",
+        "dataType": "VARCHAR2",
+        "dataLength": 64,
+        "nullable": "Y"
+      }
+    },
+    "audibleRange": {
+      "type": "Number",
+      "required": false,
+      "length": 22,
+      "oracle": {
+        "columnName": "AUDIBLE_RANGE",
+        "dataType": "NUMBER",
+        "dataLength": 22,
+        "nullable": "Y"
+      }
+    },
+    "effectiveRange": {
+      "type": "Number",
+      "required": false,
+      "length": 22,
+      "oracle": {
+        "columnName": "EFFECTIVE_RANGE",
+        "dataType": "NUMBER",
+        "dataLength": 22,
+        "nullable": "Y"
+      }
+    },
+    "rounds": {
+      "type": "Number",
+      "required": false,
+      "length": 22,
+      "oracle": {
+        "columnName": "ROUNDS",
+        "dataType": "NUMBER",
+        "dataLength": 22,
+        "nullable": "Y"
+      }
+    },
+    "extras": {
+      "type": "String",
+      "required": false,
+      "length": 64,
+      "oracle": {
+        "columnName": "EXTRAS",
+        "dataType": "VARCHAR2",
+        "dataLength": 64,
+        "nullable": "Y"
+      }
+    },
+    "fireModes": {
+      "type": "String",
+      "required": false,
+      "length": 64,
+      "oracle": {
+        "columnName": "FIRE_MODES",
+        "dataType": "VARCHAR2",
+        "dataLength": 64,
+        "nullable": "Y"
+      }
+    }
+  }
+}

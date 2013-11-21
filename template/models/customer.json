@@ -1,0 +1,46 @@
+{
+  "name": "Customer",
+  "options": {
+    "idInjection": false,
+    "oracle": {
+      "schema": "BLACKPOOL",
+      "table": "CUSTOMER"
+    },
+    "extend": "User"
+  },
+  "properties": {
+    "id": {
+      "type": "String",
+      "length": 20,
+      "id": 1,
+      "oracle": {
+        "columnName": "ID",
+        "dataType": "VARCHAR2",
+        "dataLength": 20,
+        "nullable": "N"
+      }
+    },
+    "name": {
+      "type": "String",
+      "required": false,
+      "length": 40,
+      "oracle": {
+        "columnName": "NAME",
+        "dataType": "VARCHAR2",
+        "dataLength": 40,
+        "nullable": "Y"
+      }
+    },
+    "militaryAgency": {
+      "type": "String",
+      "required": false,
+      "length": 20,
+      "oracle": {
+        "columnName": "MILITARY_AGENCY",
+        "dataType": "VARCHAR2",
+        "dataLength": 20,
+        "nullable": "Y"
+      }
+    }
+  }
+}
