@@ -10,9 +10,9 @@ esac
 #then
     ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/node $OPENSHIFT_SLS_DIR/bin/node/
     ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/npm $OPENSHIFT_SLS_DIR/bin/node/
-    ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/slc $OPENSHIFT_SLS_DIR/bin/node/
-    ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/slnode $OPENSHIFT_SLS_DIR/bin/node/
-    ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/lb  $OPENSHIFT_SLS_DIR/bin/node/
+#    ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/slc $OPENSHIFT_SLS_DIR/bin/node/
+#    ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/slnode $OPENSHIFT_SLS_DIR/bin/node/
+#    ln -sf $OPENSHIFT_SLS_DIR/versions/$version/bin/lb  $OPENSHIFT_SLS_DIR/bin/node/
 #else
 #    if [[ -f $OPENSHIFT_SLS/bin/node/node ]] ; then
 #      rm $OPENSHIFT_SLS_DIR/bin/node/node
