@@ -1,37 +1,41 @@
 {
-  "name":"StrongLoop-SampleApp",
-  "version":"0.1.0",
-  "description":  "StrongLoop Sample PaaS Application",
-
-  "keywords": [ "StrongLoop", "strongloop", "Node.js", "node.js", 
-                "PaaS", "application"
-              ],
-
-  "author": {
-     "name": "StrongLoop",
-     "url": "https://github.com/strongloop/dist-paas-quickstart"
-  },
-
-  "repository": { 
-    "type": "git",
-    "url":  "https://github.com/strongloop/dist-paas-quickstart"
-  },
-
+  "name": "sls-sample-app",
+  "version": "1.1.0",
+  "description": "StrongLoop Suite Sample Application",
+  "main": "app.js",
   "dependencies": {
-    "strong-agent": "latest",
-    "ejs":       "latest",
-    "express":   "latest"
+    "loopback": "1.1.0",
+    "loopback-connector-rest": "1.1.0",
+    "request": "~2.21.0",
+    "strong-task-emitter": "~0.0.4",
+    "rc": "~0.3.0",
+    "cors": "~1.0.1"
   },
-
+  "optionalDependencies": {
+    "strong-cluster-control": "~0.1.0",
+    "strong-agent": "~0.2.15",
+    "loopback-connector-oracle": "~1.1.0",
+    "loopback-connector-mongodb": "~1.1.0",
+    "loopback-connector-mysql": "~1.0.0",
+    "weighted": "~0.2.2",
+    "shuffle": "~0.2.1",
+    "text-table": "~0.1.1"
+  },
   "devDependencies": {
+    "supertest": "~0.7.1",
+    "mocha": "~1.12.0"
   },
-
-  "bundleDependencies": [],
-
-  "main": "server.js",
-
-  "scripts":{
-    "start":"node server.js"
-  }
-
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strongloop/sls-sample-app.git"
+  },
+  "scripts": {
+    "start": "node app",
+    "install": "node build/readme.js",
+    "test": "mocha -b -R spec"
+  },
+  "author": "Ritchie Martori",
+  "private": false,
+  "readmeFilename": "README.md",
+  "license": "MIT"
 }
