@@ -96,7 +96,7 @@ function start() {
     pushd "$OPENSHIFT_REPO_DIR" > /dev/null
     {
         echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' ..."
-        echo "Node app '$node_app'"
+        echo $node_app
 	echo "
         if [ ! -f "$OPENSHIFT_REPO_DIR/package.json" ]; then
             echo "    Script       = $node_app"
