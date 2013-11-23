@@ -1,6 +1,6 @@
 openshift-cartridge-strongloop
 ==============================
-
+#phase 1
 ## Openshift Cartridge for StrongLoop Suite
 This OpenShift Cartridge contains the StrongLoop Distribution in its entirety.  It includes a private mBaaS, certified modules, an operations console and cluster management capabilities. StrongLoop Suite is open source and available on-premise or in the cloud. It leverages the accessibility of JavaScript and the power of the Node.js community, so that mobile developers can easily connect to data in the cloud and behind corporate firewalls.
 
