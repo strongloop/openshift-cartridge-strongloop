@@ -11,6 +11,7 @@ npm-install(1) -- Install a package
     npm install <name>@<tag>
     npm install <name>@<version>
     npm install <name>@<version range>
+    npm i (with any of the previous argument usage)
 
 ## DESCRIPTION
 
@@ -42,6 +43,9 @@ after packing it up into a tarball (b).
     it installs the current package context (ie, the current working
     directory) as a global package.
 
+    By default, `npm install` will install all modules listed as
+    dependencies. With the `--production` flag,
+    npm will not install modules listed in `devDependencies`.
 
 * `npm install <folder>`:
 
@@ -151,7 +155,9 @@ For example:
 
     npm install sax@">=0.1.0 <0.2.0" bench supervisor
 
-The `--tag` argument will apply to all of the specified install targets.
+The `--tag` argument will apply to all of the specified install targets. If a
+tag with the given name exists, the tagged version is preferred over newer
+versions.
 
 The `--force` argument will force npm to fetch remote resources even if a
 local copy exists on disk.
