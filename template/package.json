@@ -4,7 +4,6 @@
   "description": "StrongLoop Suite Sample Application",
   "main": "app.js",
   "dependencies": {
-    "strong-cli" : "~2.0.0",
     "loopback": "1.1.0",
     "loopback-connector-rest": "1.1.0",
     "request": "~2.21.0",
