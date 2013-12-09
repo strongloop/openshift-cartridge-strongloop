@@ -70,13 +70,13 @@ function get_main_script_from_package_json() {
 try {
   var zmain = require('$OPENSHIFT_REPO_DIR/package.json').main;
   if (typeof zmain === 'undefined') {
-    console.log('server.js');
+    console.log('app.js');
   }
   else {
     console.log(zmain);
   }
 } catch(ex) {
-  console.log('server.js');
+  console.log('app.js');
 }
 NODE_EOF
 
@@ -91,11 +91,12 @@ function start() {
     [ -f "$envf" ]  &&  source "$envf"
 
     #  Ensure we have script file.
-    node_app=${node_app:-"server.js"}
+    node_app=${node_app:-"app.js"}
 
     pushd "$OPENSHIFT_REPO_DIR" > /dev/null
     {
         echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' ..."
+        echo $node_app
         if [ ! -f "$OPENSHIFT_REPO_DIR/package.json" ]; then
             echo "    Script       = $node_app"
             echo "    Script Args  = $node_app_args"
