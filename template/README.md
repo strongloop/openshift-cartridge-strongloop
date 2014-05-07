@@ -1,48 +1,36 @@
-## StrongLoop Suite Sample Application
+## LoopBack Sample Application
 
-### BlackPool Surplus Rentals Corp
+### i-Car Rentals Corp
 
-BlackPool is an (imaginary) military equipment rental dealer with gun store 
-outlets in major cities around the world. They need to replace their existing 
-desktop reservation system with a new mobile app.
+i-Car is an (imaginary) car rental dealer with locations in major cities around
+the world. They need to replace their existing desktop reservation system with
+a new mobile app.
 
-### What is the end user experience?
+### End user experience
 
-As a small country army general with a limited budget, I need to be able to rent 
-weapons for an upcoming battle, so I can use them to defeat my enemy then return 
-them to avoid paying full price.
-
-Currently I have to make reservations from my laptop. Since my battalion is 
-always on the move, it isn't practical from me to always pull out my laptop to 
-rent some more ammunition. I need to be able to find the closest available 
-weapons an ammo wherever I am and from my phone. 
-
-I should be able to open the BlackPool Surplus Rentals App on my iPhone and see 
-a map of nearby rental locations. I should be able to push a "list" button that 
-takes me to a list of available weapons in the area. This area should only 
-include what is visible on the map that I can manipulate. I should be able to 
-filter this list of weapons by price, ammo type and distance.
-
-Once I find the weapon I want to reserve I should be able to select it and enter 
-the quantity I want to reserve. If I am not logged in the app should prompt me 
-to register. The app should tell me if the quantity is available and if so that 
-my reservation has been made.
+The app enables customers to find the closest available cars using the i-Car app
+on a smartphone. The app shows a map of nearby rental locations and lists
+available cars in the area shown on the map. In addition, the customer can
+filter the list of cars by make, model, class, year and color. The customer can
+then select the desired car and reserve it via the app. If not logged in the app
+prompts the customer to login or register. The app indicates if the desired car
+is available and if so, confirms the reservation.
 
 ### Features
 
- - Authenticates and verifies the identity of military officials.
+ - Authenticates and verifies customers' identities.
  - Securely exposes inventory data to mobile applications.
- - Allow users to find weapons and ammo available **within a specific area**.
- - Allow users to reserve weapons for rental.
+ - Allow customers to find cars available **within a specific area**.
+ - Allow customers to reserve cars for rental.
 
 ### REST APIs
 
- - `/weapons` exposes a queryable (filter, sort) collection of available weapons 
+ - `/cars` exposes a queryable (filter, sort) collection of available cars
     over HTTP / JSON
- - `/weapons/nearby?&lat=...&long=... or ?zip=...` returns a filtered set of 
-    available weapons nearby the requesting user
- - `/weapons/nearby?id=24&zip=94555` returns nearby weapons of id 24.
- - `/weapons/:id` returns a specific weapon from the inventory, with specific 
+ - `/cars/nearby?&lat=...&long=... or ?zip=...` returns a filtered set of
+    available cars nearby the requesting user
+ - `/cars/nearby?id=24&zip=94555` returns nearby cars of id 24.
+ - `/cars/:id` returns a specific car from the inventory, with specific
     pricing and images
  - `/users/login` allows a customer to login
  - `/users/logout` allows a customer to logout
@@ -51,19 +39,18 @@ my reservation has been made.
 
 #### Customer Database
 
-All customer information is available from the SalesForce api.
+All customer information is available from the SalesForce API.
 
 #### Inventory Database
 
-All weapon inventory is already available in an **existing** Oracle X3-8 Exadata 
-Database Machine in an extremely secure location.
+All car inventory is already available in an **existing** Oracle X3-8 Exadata
+database.
 
 The Inventory DB schema looks like this:
 
 ##### **Customers**
  - id string
  - name string
- - military_agency string
  - username string
  - email string
  - password string
@@ -94,14 +81,15 @@ The Inventory DB schema looks like this:
  - available number
  - total number
  
-##### **Products**
- - id string
- - name string
- - audible_range number
- - effective_range number
- - rounds number
- - extras string
- - fire_modes string
+##### **Car**
+- id string
+- vin string
+- year number
+- make string
+- model string
+- image string
+- carClass string
+- color string
  
 ##### **Location**
  - id string

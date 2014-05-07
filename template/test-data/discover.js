@@ -2,7 +2,7 @@
  * Run `node import.js` to import the test data into the db.
  */
 
-var weapons = require('./weapons.json');
+var cars = require('./cars.json');
 var loopback = require('loopback');
 var fs = require('fs');
 var path = require('path');

@@ -47,12 +47,20 @@ function toWeightTable(choices) {
   })));
 }
 
+function getBaseURL() {
+  var ip = process.env.IP || process.env.HOST || '127.0.0.1'
+  var port = process.env.PORT || 3000;
+  var baseURL = 'http://' + ip + ':' + port + '/api';
+  return baseURL;
+}
 /**
  * This kicks off the application
  * @type {[type]}
  */
 function start() {
-  request.get('http://localhost:3000/routes', function (err, response, body) {
+  request.get(getBaseURL() + '/routes', function (err, response, body) {
+    if(err)
+      throw err;
     body = toJSON(body);
 
     var routes = distillRoutes(body);
@@ -124,7 +132,7 @@ function hit(choices) {
   }
 
   // Make the request.
-  request[verb]('http://localhost:3000' + path, {
+  request[verb](getBaseURL() + path, {
     json: {}
   }, function (err, response, body) {
     if (err) {

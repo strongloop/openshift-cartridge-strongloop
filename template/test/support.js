@@ -17,11 +17,13 @@ importer = require('../test-data/import');
  */
 
 testData = {
-  weapons: require('../test-data/weapons'),
+  cars: require('../test-data/cars'),
   locations: require('../test-data/locations')
 };
 
 before(function(done) {
+  this.timeout(50000);
+  console.error('Importing test data, this may take long time.');
   importer.on('error', done);
   importer.on('done', done);
 });

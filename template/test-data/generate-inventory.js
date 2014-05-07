@@ -8,17 +8,16 @@
 
 var fs = require('fs');
 var inventory = [];
-var weaponTotal = {};
 var request = require('request');
 
-request('http://localhost:3000/weapons', {json: true}, function(err, res, weapons) {
+request('http://localhost:3000/cars', {json: true}, function(err, res, cars) {
   request('http://localhost:3000/locations', {json: true}, function(err, res, locations) {
     locations.forEach(function(loc) {
-      weapons.forEach(function(weapon) {
+      cars.forEach(function(car) {
         var availableAtLocation = rand(0, 100);
 
         inventory.push({
-          productId: weapon.id,
+          productId: car.id,
           locationId: loc.id,
           available: rand(0, availableAtLocation),
           total: availableAtLocation

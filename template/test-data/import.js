@@ -3,92 +3,77 @@
  */
 
 var db = require('../data-sources/db');
-var weapons = require('./weapons.json');
+var cars = require('./cars.json');
 var customers = require('./customers.json');
 var inventory = require('./inventory.json');
 var locations = require('./locations.json');
-var loopback = require('loopback');
-var Weapon = require('../models/weapon');
+// var loopback = require('loopback');
 var Inventory = require('../models/inventory');
 var Location = require('../models/location');
 var Customer = require('../models/customer');
-var TaskEmitter = require('strong-task-emitter');
+var Car = require('../models/car');
+
+var async = require('async');
+
+var events = require('events');
+var emitter = new events.EventEmitter();
+
+module.exports = emitter;
 
 var ids = {
-  location: 1,
-  weapon: 1,
-  inventory: 1,
-  customer: 1
+};
+
+function importData(Model, data, cb) {
+
+  // console.log('Importing data for ' + Model.modelName);
+  Model.destroyAll(function (err) {
+    if(err) {
+      cb(err);
+      return;
+    }
+    async.each(data, function (d, callback) {
+      if(ids[Model.modelName] === undefined) {
+        ids[Model.modelName] = 1;
+      }
+      d.id = ids[Model.modelName]++;
+      Model.create(d, callback);
+    }, cb);
+  });
 }
 
-var importer = module.exports = new TaskEmitter();
-importer.on('error', function (err) {
-  console.error('error', err);
-});
+async.series(
+  [
+    function (cb) {
+      db.autoupdate(cb);
+    },
 
-db.autoupdate(function () {
-  Location.destroyAll(function (err) {
+    importData.bind(null, Location, locations),
+    importData.bind(null, Car, cars),
+    importData.bind(null, Inventory, inventory),
+    importData.bind(null, Customer, customers)
+
+    /*
+    function (cb) {
+      Car.destroyAll(function (err) {
+        if(err) {
+          cb(err);
+          return;
+        }
+        async.eachSeries(cars, function (car, callback) {
+          car.id = ids.car++;
+          delete car.dealerId;
+          Car.create(car, callback);
+        }, cb);
+      });
+    },
+    */], function (err, results) {
     if(err) {
-      console.error('Could not destroy locations.');
-      throw err;
+      console.error(err);
+      emitter.emit('error', err);
+    } else {
+      emitter.emit('done');
     }
-    
-    Weapon.destroyAll(function (err) {
-      if(err) {
-        console.error('Could not destroy weapons (PRODUCT).');
-        throw err;
-      }
-      
-      weapons.forEach(function (obj) {
-        obj.name = obj.title;
-        delete obj.title;
-        delete obj.slot;
-        delete obj.source;
-        delete obj.damage;
-        delete obj.rawDamage;
-        obj.id = ids.weapon++;
-          
-        if(Array.isArray(obj.audibleRange)) obj.audibleRange = obj.audibleRange[0];
-        if(Array.isArray(obj.rounds)) obj.rounds = obj.rounds[0];
-        if(Array.isArray(obj.fireModes)) obj.fireModes = JSON.stringify(obj.fireModes);
-        if(Array.isArray(obj.extras)) obj.extras = JSON.stringify(obj.extras);
-        if(Array.isArray(obj.magazines)) obj.magazines = JSON.stringify(obj.magazines);
-        
-        importer.task(Weapon, 'create', obj);
-      });
-      
-      locations.forEach(function (loc) {
-        loc.id = ids.location++;
-        importer.task(Location, 'create', loc);
-      });
-    });
-    
-    Inventory.destroyAll(function (err) {
-      if(err) {
-        console.error('Could not destroy inventory.');
-        throw err;
-      }
-      
-      inventory.forEach(function (inv) {
-        inv.id = ids.inventory++;
-        importer.task(Inventory, 'create', inv);
-      });
-    });
-    
-    
-    
-    Customer.destroyAll(function (err) {
-      if(err) {
-        console.error('Could not destroy customers.');
-        throw err;
-      }
-      
-      customers.forEach(function (obj) {
-        obj.id = ids.customer++;
-        
-        importer.task(Customer, 'create', obj);
-      });
-    });
-   
   });
-});
+
+
+

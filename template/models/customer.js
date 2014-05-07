@@ -18,7 +18,6 @@ var customer = module.exports = loopback.User.extend(
 
 // attach to the db
 customer.attachTo(db);
-customer.session.attachTo(db);
 
 // TODO - this should be available as `hideRemotely: true`
 customer.beforeRemote('find', function(ctx, inst, next) {

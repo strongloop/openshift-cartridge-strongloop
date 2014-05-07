@@ -79,7 +79,7 @@ loopback.remoteMethod(
 RentalLocation.beforeSave = function(next, loc) {
   // geo code the address
   if (!loc.geo) {
-    rest.geocode(loc.street, loc.city, loc.zipcode, function(err, result, res) {
+    rest.geocode(loc.street, loc.city, loc.state, function(err, result, res) {
       if (result && result[0]) {
         loc.geo = result[0].lng + ',' + result[0].lat;
         next();

@@ -9,7 +9,7 @@ var config = require('rc')('loopback', {
 });
 
 if (!config[nodeEnv]) {
-  config[nodeEnv] = {};
+  config[nodeEnv] = nodeEnv == 'test' ? config.demo : {};
 }
 
 module.exports = config;

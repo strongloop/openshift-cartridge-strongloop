@@ -22,22 +22,22 @@
     "street": {
       "type": "String",
       "required": false,
-      "length": 20,
+      "length": 64,
       "oracle": {
         "columnName": "STREET",
         "dataType": "VARCHAR2",
-        "dataLength": 20,
+        "dataLength": 64,
         "nullable": "Y"
       }
     },
     "city": {
       "type": "String",
       "required": false,
-      "length": 20,
+      "length": 64,
       "oracle": {
         "columnName": "CITY",
         "dataType": "VARCHAR2",
-        "dataLength": 20,
+        "dataLength": 64,
         "nullable": "Y"
       }
     },
@@ -55,11 +55,11 @@
     "name": {
       "type": "String",
       "required": false,
-      "length": 20,
+      "length": 32,
       "oracle": {
         "columnName": "NAME",
         "dataType": "VARCHAR2",
-        "dataLength": 20,
+        "dataLength": 32,
         "nullable": "Y"
       }
     },

@@ -1,8 +1,9 @@
 # Welcome to the StrongLoop Cloud Experience!
 
-This Cloud 9 Workspace contains the StrongLoop Suite distribution in its entirety
+This Cloud 9 Workspace contains several StrongLoop products including slc (CLI),
+LoopBack (API Server) and the StrongOps agent (DevOps and Performance Monitoring) 
 for you to try in the cloud (Cloud 9, to be exact) before [downloading and
-installing](http://www.strongloop.com/get-started) the distro on your own.
+installing](http://www.strongloop.com/get-started) them on your own.
 
 ## Before You Begin
 
@@ -31,9 +32,9 @@ fix that:
 ## Running and Viewing the SLS Sample Application
 
 Remember that friendly, green "Run" button in the main menu? Go ahead and give
-'er a click. The SLS (StrongLoop Suite) Sample App should begin running, and
-the bottom Output tab should become visible. If not, select Output in the bottom
-pane and take note of a few things:
+'er a click. The LoopBack Sample App should begin running, and the bottom Output
+tab should become visible. If not, select Output in the bottom pane and take
+note of a few things:
 
 ```
 Your code is running at 'http://strongloop.soandso.cloud9beta.com'.
