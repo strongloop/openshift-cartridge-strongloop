@@ -1,0 +1,53 @@
+{
+  "name": "Car",
+  "base": "PersistedModel",
+  "options": {
+    "mysql": {
+      "table": "car"
+    },
+    "mongodb": {
+      "collection": "car"
+    },
+    "oracle": {
+      "schema": "DEMO",
+      "table": "PRODUCT"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true
+    },
+    "vin": {
+      "type": "string"
+    },
+    "year": {
+      "type": "number"
+    },
+    "make": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "carClass": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "reservations": {
+      "type": "hasMany",
+      "model": "Reservation",
+      "foreignKey": "productId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

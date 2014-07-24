@@ -1,59 +1,44 @@
 {
-  "name": "sls-sample-app",
-  "version": "2.0.1",
-  "description": "LoopBack Sample Application",
-  "main": "app.js",
+  "name": "loopback-example-app",
+  "version": "3.0.0",
+  "description": "LoopBack Example Application",
+  "main": "server/server.js",
   "dependencies": {
-    "async": "~0.2.10",
-    "loopback": "~1.7.0",
-    "request": "~2.34.0",
-    "strong-task-emitter": "~0.0.5",
-    "rc": "~0.3.4",
-    "cors": "~2.1.1",
-    "loopback-explorer": "~1.1.0",
-    "loopback-connector-rest": "~1.1.3",
-    "loopback-connector-oracle": "~1.1.5",
-    "loopback-connector-mongodb": "~1.1.6",
-    "loopback-connector-mysql": "~1.1.1",
-    "weighted": "~0.2.2",
+    "compression": "^1.0.3",
+    "errorhandler": "^1.1.1",
+    "loopback": "^2.0.0",
+    "loopback-boot": "^2.0.0",
+    "loopback-datasource-juggler": "^2.0.0",
+    "serve-favicon": "^2.0.1",
+    "function-rate-limit": "~0.0.1",
+    "request": "^2.37.0",
     "shuffle": "~0.2.1",
-    "text-table": "~0.2.0"
+    "text-table": "~0.2.0",
+    "weighted": "~0.2.2",
+    "async": "~0.9.0",
+    "loopback-connector-rest": "^1.1.4"
   },
   "optionalDependencies": {
-    "loopback-connector-oracle": "~1.1.5",
-    "loopback-connector-mongodb": "~1.1.6",
-    "loopback-connector-mysql": "~1.1.1",
-    "weighted": "~0.2.2",
-    "shuffle": "~0.2.1",
-    "text-table": "~0.2.0"
+    "loopback-explorer": "^1.1.0",
+    "loopback-connector-mysql": "^1.2.1",
+    "loopback-connector-mongodb": "^1.2.5",
+    "loopback-connector-oracle": "^1.2.1"
   },
   "devDependencies": {
-    "supertest": "~0.9.0",
-    "mocha": "~1.17.1"
+    "mocha": "^1.20.1",
+    "supertest": "^0.13.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/strongloop/sls-sample-app.git"
+    "url": "https://github.com/strongloop/loopback-example-app.git"
   },
+  "author": "Miroslav Bajtos <miroslav@strongloop.com>",
+  "license": {
+    "name": "MIT",
+    "url": "https://github.com/strongloop/loopback-example-app/blob/master/LICENSE"
+   },
   "scripts": {
-    "start": "node app",
-    "install": "node build/readme.js",
-    "test": "mocha -b -R spec"
-  },
-  "author": {
-    "name": "Ritchie Martori"
-  },
-  "private": false,
-  "readmeFilename": "README.cloud9.md",
-  "license": "MIT",
-  "readme": "# Welcome to the StrongLoop Cloud Experience!\n\nThis Cloud 9 Workspace contains several StrongLoop products including slc (CLI),\nLoopBack (API Server) and the StrongOps agent (DevOps and Performance Monitoring) \nfor you to try in the cloud (Cloud 9, to be exact) before [downloading and\ninstalling](http://www.strongloop.com/get-started) them on your own.\n\n## Before You Begin\n\nBefore we really get into the StrongLoop Suite, take a minute to familiarize\nyourself with the Cloud 9 IDE.\n\n * The left edge of the screen is a full view of the projects, with all the\nwonderful files and folders therein. Feel free to have a look around, but we\nrecommend finishing this README before exploring _too_ much.\n * On the top of the screen is the main menu, the toolbar, and the tabs. Boring,\nbut necessary. The most necessary element is the \"Run\" button, which we'll come\nto shortly.\n * At the bottom is a two-tab interface: Terminal and Output. The Terminal\nallows you to (as you might expect) run commands and interact with your current\napplication/project. The Output tab contains the logs for the running instance\nof your application.\n * When you run the application it'll be necessary to open multiple\n terminal windows to run multiple processes at the same time, to open\n a new terminal window go to the \"View\" menu and choose\n \"Terminals\"->New Terminal\n * The panel you're currently reading from is the main code editor; as we walk\nthrough Node examples, this panel will host all of the code being discussed.\n * The panel on the right is a full, working browser window. No browser? Let's\nfix that:\n\n## Running and Viewing the SLS Sample Application\n\nRemember that friendly, green \"Run\" button in the main menu? Go ahead and give\n'er a click. The LoopBack Sample App should begin running, and the bottom Output\ntab should become visible. If not, select Output in the bottom pane and take\nnote of a few things:\n\n```\nYour code is running at 'http://strongloop.soandso.cloud9beta.com'.\nImportant: use 'process.env.PORT' as the port and 'process.env.IP' as the host in your scripts!\nUsing the memory connector.\nTo specify another connector:\n  DB=oracle node app\n```\n\nThe first is that the application has run successfully. If that's no the case\n(for example, if the word Exception and a big, scary stack trace have been\nproduced, then something's wrong!), then please [reach out](http://wwww.strongloop.com/strongloop-suite/strongsupport) and we'll\ngladly give you a hand.\n\nSecond, click the blue link in that first message. If the right browser tab was\nhidden, it'll reveal itself ... along with the home page of the SLS Sample.\n\nThird, it's MUCH better if you view the home page of the sample\napplication in a browser on your local machine.  To do so, click the\ndetach icon on the browser pane, next to the close icon.  This will\nopen a new browser tab or window on your local browser with the home\npage.\n\nLastly, note the URL of your sample app in the browser pane.  It's\nthe same URL that should be displayed in the Output tab after \"Your\ncode is running at...\".\n\n## Where do I go from here?\n\nNow that you have the Sample App running, embiggen (and, yes, that's a word) the\nbrowser tab on the right or on your local browser and take a peek. The Next Steps are inside!\n\n",
-  "bugs": {
-    "url": "https://github.com/strongloop/sls-sample-app/issues"
-  },
-  "homepage": "https://github.com/strongloop/sls-sample-app",
-  "_id": "sls-sample-app@2.0.1",
-  "_shasum": "5f4f8c376fdde5e22f614e806e8a9a7322c832f7",
-  "_resolved": "git://github.com/strongloop/sls-sample-app#6705f4669fc794a8788f5d95897901dd5f7aca8d",
-  "_from": "git://github.com/strongloop/sls-sample-app",
-  "_fromGithub": true
+    "test": "mocha -R spec server/test",
+    "pretest": "jshint ."
+  }
 }

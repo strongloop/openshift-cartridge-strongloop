@@ -1,5 +1,9 @@
 ## LoopBack Sample Application
 
+This example application was scaffolded with the help of `yo loopback`. Refer
+to the section [Building from scratch](building-from-scratch) below for more
+details.
+
 ### i-Car Rentals Corp
 
 i-Car is an (imaginary) car rental dealer with locations in major cities around
@@ -34,6 +38,59 @@ is available and if so, confirms the reservation.
     pricing and images
  - `/users/login` allows a customer to login
  - `/users/logout` allows a customer to logout
+
+### Configure and run the application
+
+Start the application back-end by running the following command:
+
+```
+$ node .
+```
+
+Now open your browser and point it to
+[http://127.0.0.1:3000](http://127.0.0.1:3000) to access the application UI.
+
+#### Configuration
+
+By default, the sample application uses the memory connector and listens on
+the port 3000 on all network interfaces.
+
+You can configure other data sources by adding a new key to `DATASTORES`
+object in `rest/datasources.local.js`:
+
+```js
+var DATASTORES = {
+  custom: {
+    connector: 'my-custom-connector',
+    // configuration for the custom connector
+  },
+  memory: {
+  },
+  // etc.
+};
+```
+
+The sample can be configured using the following environment variables:
+
+- `DB`: The db type, use `memory`, `mongodb` or `oracle`
+- `IP`: The http server listener ip address or hostname, default to `0.0.0.0`
+   (any address)
+- `PORT`: The http server listener port number, default to `3000`
+
+For example,
+
+ - To run the application at port 3001 with MongoDB:
+
+   ```
+   $ DB=mongodb PORT=3001 node .
+   ```
+
+ - To run the application at port 3002 with Oracle:
+
+  ```
+   $ DB=oracle PORT=3002 node .
+  ```
+
 
 ### Infrastructure
 
@@ -111,51 +168,115 @@ The Inventory DB schema looks like this:
 
 Google's location API is used to return the users city from a given zip or lat/long.
 
-### Configure and run the application
+### Project files
 
-By default, the sample application uses the memory connector and listen on
-http://0.0.0.0:3000.
- 
-> node app
+The project is composed from multiple components.
 
-Open browser and point it to http://127.0.0.1:3000.
+ - `models/` contains definition of models and implementation of custom model
+   methods.
 
-You can configure other data sources by adding the following json into `.loopbackrc`
-at the root of the module.
+ - `rest/` contains the REST API server, it exposes the shared models
+   via REST API.
 
-    {
-        "demo": {
-            "memory": {},
-            "oracle": {
-                "host": "your-oracle-server-ip-or-hostname",
-                "port": 1521,
-                "database": "XE",
-                "username": "demo",
-                "password": "password"
-            },
-            "mongodb": {
-                "host": "your-mongodb-server-ip-or-hostname",
-                "database": "demo",
-                "username": "demo",
-                "password": "password",
-                "port": 27017
-            }
-        }
-    }
+ - `website/` contains a simple single-page-application that is served
+  when users open the project in the browser.
 
-The sample can be configured using the following environment variables:
+ - `server/` is the main HTTP server that brings together all other components.
 
-- DB: The db type, use 'memory', 'mongodb' or 'oracle'
-- IP: The http server listener ip address or hostname, default to 0.0.0.0 (any address)
-- PORT: The http server listener port number, default to 3000
+ - `sample-data/` contains a set of sample models that are used to initialize
+  the database with some data.
 
-For example,
+ - `test/` provides few basic unit-tests to verify that the server provides
+  the expected API.
 
-To run the application at port 3001 with MongoDB:
+Refer to
+[Creating a LoopBack application](http://docs.strongloop.com/display/LB/Creating+a+LoopBack+application)
+for more information.
 
-> DB=mongodb PORT=3001 node app
+### Building from scratch
 
-To run the application at port 3002 with Oracle:
+Most of the sample application can be scaffolded using loopback's yeoman
+generators. The generator module can be installed from npm:
 
-> DB=oracle PORT=3002 node app
+```
+$ npm install -g generator-loopback
+```
 
+Once you have the generators installed, run the following command to recreate
+the sample app from scratch:
+
+```
+$ yo loopback:example -l
+```
+
+This will call other generators like `yo loopback` and `yo loopback:model`
+to scaffold the application. You can learn more about these generators in our
+documentation:
+[Yeoman generators](http://docs.strongloop.com/display/LB/Yeoman+generators).
+
+When run with the `-l` option, the example generator
+prints a detailed list of steps that are executed to walk you trough the
+scaffolding process. You can re-run the steps manually yourself to get a better
+understanding of how the loopback generators work.
+
+This is how the output looks like:
+
+```
+Create initial project scaffolding
+  $ yo loopback:app loopback-example
+    [?] Enter a directory name where to create the project: .
+    [?] What's the name of your application? loopback-example
+
+
+I'm all done. Just run npm install to install the required dependencies.
+
+
+Add datasource geo
+  $ yo loopback:datasource geo
+    [?] Select the connector for geo: rest
+  Set datasource options: operations
+Add model Car
+  $ yo loopback:model Car
+    [?] Select the data-source to attach Car to: db
+    [?] Expose Car via the REST API?
+    [?] Property name:
+  $ yo loopback:property
+    [?] Select the model: Car
+    [?] Enter the property name: id
+    [?] Property type: string
+    [?] Required? false
+  Set property options: id
+  (more properties follow in the output)
+  Add relation Car hasMany Reservation
+  Set model options: mysql mongodb oracle
+Add model Customer
+(and so on)
+```
+
+The first step is to prepare the project infrastructure by
+running `yo loopback:app`, which is an alias for `yo loopback`.
+
+Then there is a `geo` datasource added by running `yo loopback:datasource geo`.
+When prompted for the connector to use, the `rest` is selected. After the
+datasource was created, the REST operations are added to the generated
+file `datasources.json` manually.
+
+The next step is to create all application models. The generator
+`yo loopback:model` is called to define a new model, `yo loopback:property` to
+add a property definition to the new model. Some property options like
+`"id": true` are not supported by the generator, they are added manually.
+
+Also model relations and per-datasource model configurations are not supported
+by the generator yet, as can be seen from these two lines:
+
+```
+  Add relation Car hasMany Reservation
+  Set model options: mysql mongodb oracle
+```
+
+Open the file `models/car.json` too see what has been added by the generator.
+
+When all models are defined, the example generator performs steps that you
+would do manually when working on a new application: add more dependencies to
+package.json, extend the models with custom behaviour, implement unit-tests,
+etc.

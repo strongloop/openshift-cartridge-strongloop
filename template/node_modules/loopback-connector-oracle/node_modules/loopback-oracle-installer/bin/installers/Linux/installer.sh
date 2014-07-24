@@ -6,7 +6,7 @@ SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 INSTALL_DIR=$(cd -P -- "$SCRIPT_DIR/.." && pwd -P)
 source "$INSTALL_DIR/../../lib/utils"
 
-setup_configuration "$OCI_DIR"
+setup_configuration "$OCI_DIR" "$HOME/strong-oracle.rc"
 cat << MYEOF
 
 ---------------------------------------------------------------------------

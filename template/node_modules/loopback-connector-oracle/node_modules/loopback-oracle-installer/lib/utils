@@ -3,23 +3,28 @@
 function setup_configuration() {
   ocidir=${1:-"$OCI_DIR"}
 
+  if [ -z "$2" ]; then
 # Default to .bash_profile
-  profile="$HOME/.bash_profile"
+    profile="$HOME/.bash_profile"
 
 # Check if .profile exists
-  if [ -f "$HOME/.profile" ]
-  then
-    profile="$HOME/.profile"
-  fi
+    if [ -f "$HOME/.profile" ]
+    then
+      profile="$HOME/.profile"
+    fi
 
 # Check if .bash_profile exists
-  if [ -f "$HOME/.bash_profile" ]
-  then
-    profile="$HOME/.bash_profile"
+    if [ -f "$HOME/.bash_profile" ]
+    then
+      profile="$HOME/.bash_profile"
+    fi
+
+    [ "`id -u`" = "0" ] && profile="/etc/bashrc"
+  else
+    profile=$2
   fi
 
-  [ "`id -u`" = "0" ] && profile="/etc/bashrc"
-
+  echo "$profile"
   touch "$profile"
   if ! grep "$ocidir" "$profile" > /dev/null 2>&1; then
     varname="LD_LIBRARY_PATH"
