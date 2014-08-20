@@ -91,8 +91,8 @@ function start() {
     [ -f "$envf" ]  &&  source "$envf"
 
     #  Ensure we have script file.
-    node_app=${node_app:-"app.js"}
-
+#    node_app=${node_app:-"sever/server.js"}
+    node_app=${node_app:-"app.js"} 
     pushd "$OPENSHIFT_REPO_DIR" > /dev/null
     {
         echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' ..."
@@ -190,9 +190,11 @@ function build() {
         rm -rf "${OPENSHIFT_HOMEDIR}"/.npm/*
         rm -rf "${OPENSHIFT_REPO_DIR}"node_modules/*
     fi
-
+    
     #  Newer versions of Node set tmp to $HOME/tmp, which is not available
     npm config set tmp $OPENSHIFT_TMP_DIR
+    cd "${OPENSHIFT_SLS_DIR}"; npm install strongloop; 
+    ln -s $OPENSHIFT_SLS_DIR/node_modules/strongloop/bin/slc $OPENSHIFT_SLS_DIR/bin/node/
 
     if [ -f "${OPENSHIFT_REPO_DIR}"/deplist.txt ]; then
         mods=$(perl -ne 'print if /^\s*[^#\s]/' "${OPENSHIFT_REPO_DIR}"/deplist.txt)
