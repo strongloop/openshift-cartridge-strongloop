@@ -48,21 +48,20 @@ You can now try out the LoopBack sample application running on OpenShift:
 
 If you created your own LoopBack application, follow these steps to deploy the app on OpenShift.
 
-Add a start command to your package.json and commit it-
+1. Add a start command to your package.json and commit it-
         
     "scripts": {
         "start": "slc run"
     }
 
-Add your application to a Git repository.
+2. Add your application to a Git repository.
 
         $ git init
         $ git add -A
         $ git commit -a -m "Initial Commit"
 
-Get the remote git url of the OpenShift app by running 
 
-Get the URL of the OpenShift app's remote Git repository by running:
+3. Get the URL of the OpenShift app's remote Git repository by running:
 
     $rhc app show osapp |  grep Git 
 
@@ -70,11 +69,11 @@ This will return something like this:
 
     Git URL:    ssh://52a17af15004464d950003bd@openshiftapp-domain.rhcloud.com/~/git/openshiftapp.git/
 
-In your LoopBack app directory, enter this command, where `<remote_git_url>` is the URL returned above: 
+4. In your LoopBack app directory, enter this command, where `<remote_git_url>` is the URL returned above: 
 
     $ git remote add openshift <remote_git_url>
 
-Deploy as follows:
+5. Deploy as follows:
 
     $ git push --force openshift master
 
