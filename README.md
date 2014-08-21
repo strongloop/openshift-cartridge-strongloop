@@ -1,5 +1,3 @@
-openshift-cartridge-strongloop
-==============================
 # StrongLoop Buildpack for OpenShift 
 
 StrongLoop includes:
