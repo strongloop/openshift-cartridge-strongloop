@@ -49,11 +49,17 @@ You can now try out the LoopBack sample application running on OpenShift:
 
 If you created your own LoopBack application, follow these steps to deploy the app on OpenShift.
 
-Add a start command to your package.json -
+Add a start command to your package.json and commit it-
         
     "scripts": {
         "start": "slc run"
     }
+
+Add your application to a Git repository.
+
+        $ git init
+        $ git add -A
+        $ git commit -a -m "Initial Commit"
 
 Get the remote git url of the OpenShift app by running 
 
