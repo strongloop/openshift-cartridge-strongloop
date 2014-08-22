@@ -193,8 +193,8 @@ function build() {
     
     #  Newer versions of Node set tmp to $HOME/tmp, which is not available
     npm config set tmp $OPENSHIFT_TMP_DIR
-    cd "${OPENSHIFT_SLS_DIR}"; npm install strongloop; 
-    ln -s $OPENSHIFT_SLS_DIR/node_modules/strongloop/bin/slc $OPENSHIFT_SLS_DIR/bin/node/
+    cd "${OPENSHIFT_SLS_DIR}/strongloop"; npm install; 
+    ln -s $OPENSHIFT_SLS_DIR/strongloop/bin/slc $OPENSHIFT_SLS_DIR/bin/node/
 
     if [ -f "${OPENSHIFT_REPO_DIR}"/deplist.txt ]; then
         mods=$(perl -ne 'print if /^\s*[^#\s]/' "${OPENSHIFT_REPO_DIR}"/deplist.txt)

@@ -1,0 +1,5 @@
+test/.vagrant
+node_modules
+*.tgz
+*.tar.gz
+test/loopback-example-app

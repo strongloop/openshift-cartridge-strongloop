@@ -1,0 +1,2 @@
+This is a line that is so long that\n  it continues onto the next line!
+Imagine, if you will, a stacktr..SyntaxError: Unexpected identifier\n    at Module._compile (module.js:439:25)\n    at Object.Module._extensions..js (module.js:474:10)\n    at Module.load (module.js:356:32)\n    at Function.Module._load (module.js:312:12)\n    at Function.Module.runMain (module.js:497:10)\n    at startup (node.js:119:16)\n    at node.js:906:3

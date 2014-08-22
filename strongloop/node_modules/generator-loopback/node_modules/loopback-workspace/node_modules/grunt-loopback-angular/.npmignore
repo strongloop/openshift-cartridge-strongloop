@@ -1,0 +1,16 @@
+.idea
+.project
+.DS_Store
+*.sublime*
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+npm-debug.log
+*.swp
+*.swo
+node_modules
+tmp

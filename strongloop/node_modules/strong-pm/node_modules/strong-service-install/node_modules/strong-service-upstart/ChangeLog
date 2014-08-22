@@ -1,0 +1,14 @@
+2014-07-21, Version 0.1.1
+
+
+
+2014-07-20, Version 0.1.0
+
+* Add docs (Ryan Graham)
+
+* Add support for Upstart v0.6 (Ryan Graham)
+
+* Generate an Upstart job from parameters (Ryan Graham)
+
+* Initial commit (Ryan Graham)
+

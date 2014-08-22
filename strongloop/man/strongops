@@ -1,0 +1,56 @@
+STRONGOPS()                                                        STRONGOPS()
+
+NNAAMMEE
+       ssttrroonnggooppss - configure StrongOps
+
+       Generate the configuration files to profile with StrongOps.
+
+       Prompts  for  the email address and password of your StrongOps account,
+       and saves the credentials in the specified configuration file.
+
+       There are no interactive prompts for  data  specified  on  the  command
+       line.
+
+SSYYNNOOPPSSIISS
+       slc strongops [options]
+
+OOPPTTIIOONNSS
+       ----eemmaaiill
+              Specify the email address, e.g.: ----eemmaaiill ssoommeeoonnee@@ssttrroonngglloooopp..ccoomm.
+              The address found in your ~~//..ggiittccoonnffiigg or ~~//..nnppmmrrcc is offered as
+              the default.
+
+       ----ppaasssswwoorrdd
+              Specify your StrongOps password, e.g.: ----ppaasssswwoorrdd 1122334455667788
+
+       ----nnoossaavvee
+              Prevent  saving of StrongOps account credentials, this overrides
+              any save option.
+
+       ----llooccaall
+              Saves StrongOps account credentials in a ..//ssttrroonngglloooopp..jjssoonn file.
+              This is set by default, if no other save options exist.
+
+       ----ppaacckkaaggee
+              Saves  StrongOps  account credentials in ..//ppaacckkaaggee..jjssoonn file, if
+              the file exists.
+
+       ----gglloobbaall
+              Saves StrongOps account credentials in a ~~//ssttrroonngglloooopp..jjssoonn file.
+
+       See      strong-agent      _h_t_t_p_:_/_/_d_o_c_s_._s_t_r_o_n_g_l_o_o_p_._c_o_m_/_d_i_s_p_l_a_y_/_D_O_C_/_W_o_r_k_-
+       _i_n_g_+_w_i_t_h_+_s_t_r_o_n_g_-_a_g_e_n_t  for  a  description  of  the format of the ppaacckk--
+       aaggee..jjssoonn and ssttrroonngglloooopp..jjssoonn properties used by StrongOps.
+
+EEXXAAMMPPLLEESS
+       The following will have strongops prompt for the  email  and  password.
+       The credentials are saved in the ..//ssttrroonngglloooopp..jjssoonn file:
+
+               $ slc strongops
+
+       By  using the options for email and password, you can have a non-inter-
+       active registration, e.g. that will not prompt:
+
+               $ slc strongops --email "bw@example.com" --password "12345678"
+
+                                   July 2014                       STRONGOPS()

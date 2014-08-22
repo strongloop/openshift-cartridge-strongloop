@@ -1,0 +1,141 @@
+{
+  "name": "strongloop",
+  "version": "2.7.1",
+  "description": "StrongLoop Command Line Tools",
+  "homepage": "http://www.strongloop.com",
+  "keywords": [
+    "restful",
+    "rest",
+    "api",
+    "express",
+    "restify",
+    "koa",
+    "auth",
+    "security",
+    "oracle",
+    "mysql",
+    "nosql",
+    "mongo",
+    "mongodb",
+    "sqlserver",
+    "mssql",
+    "postgres",
+    "postgresql",
+    "soap",
+    "StrongLoop",
+    "framework",
+    "mobile",
+    "mBaaS"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/strongloop/strongloop.git"
+  },
+  "author": {
+    "name": "engineering@strongloop.com"
+  },
+  "license": {
+    "name": "Dual Artistic/StrongLoop",
+    "url": "https://github.com/strongloop/strongloop/blob/master/LICENSE.md"
+  },
+  "bin": {
+    "slc": "./bin/slc",
+    "lb-ng": "./node_modules/loopback-sdk-angular-cli/bin/lb-ng",
+    "lb-ng-doc": "./node_modules/loopback-sdk-angular-cli/bin/lb-ng-doc"
+  },
+  "scripts": {
+    "lint": "jshint --exclude test/sandbox *.js lib test",
+    "test": "mocha --reporter spec",
+    "prepublish": "./prepublish.sh"
+  },
+  "dependencies": {
+    "async": "~0.2.9",
+    "colors": "~0.6.1",
+    "cpr": "~0.1.1",
+    "debug": "~0.7.2",
+    "fs.extra": "~1.2.1",
+    "inflection": "~1.2.6",
+    "ini": "~1.1.0",
+    "is2": "~0.0.3",
+    "json-file-plus": "~0.2.2",
+    "loopback-workspace": "~2.6.0",
+    "mkdirp": "~0.3.5",
+    "node-inspector": "~0.7.0",
+    "nodefly-register": "~0.3.2",
+    "npm": "~1.4.6",
+    "optimist": "~0.5.0",
+    "prompt": "~0.2.11",
+    "read": "~1.0.5",
+    "strong-build": "~0.1.0",
+    "strong-deploy": "~0.1.0",
+    "strong-pm": "~0.1.0",
+    "strong-registry": "1.x",
+    "strong-supervisor": "~0.3.2",
+    "which": "~1.0.5",
+    "generator-loopback": "1.x",
+    "loopback-sdk-angular-cli": "1.x",
+    "nopt": "~3.0.1"
+  },
+  "devDependencies": {
+    "jshint": "~2.1.10",
+    "mocha": "~1.12.0",
+    "chai": "latest",
+    "nexpect": "git+https://github.com/strongloop/nexpect",
+    "strong-install": "~0.6.3",
+    "chai-fs": "0.0.3",
+    "chai-json-schema": "~1.0.7"
+  },
+  "gitHead": "5d172d7c2511d603166248f79d1d3f57570b80a0",
+  "bugs": {
+    "url": "https://github.com/strongloop/strongloop/issues"
+  },
+  "bundleDependencies": [
+    "nodefly-register"
+  ],
+  "_id": "strongloop@2.7.1",
+  "_shasum": "98afa568aa642ee05250dbbd33733a25f28f55e8",
+  "_from": "strongloop@",
+  "_npmVersion": "1.4.21",
+  "_npmUser": {
+    "name": "kraman",
+    "email": "kraman@strongloop.com"
+  },
+  "maintainers": [
+    {
+      "name": "rfeng",
+      "email": "enjoyjava@gmail.com"
+    },
+    {
+      "name": "ritch",
+      "email": "skawful@gmail.com"
+    },
+    {
+      "name": "strongloop",
+      "email": "callback@strongloop.com"
+    },
+    {
+      "name": "bajtos",
+      "email": "miro.bajtos@gmail.com"
+    },
+    {
+      "name": "kraman",
+      "email": "kraman@strongloop.com"
+    },
+    {
+      "name": "octet",
+      "email": "sam@strongloop.com"
+    },
+    {
+      "name": "rmg",
+      "email": "r.m.graham@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "98afa568aa642ee05250dbbd33733a25f28f55e8",
+    "tarball": "http://registry.npmjs.org/strongloop/-/strongloop-2.7.1.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/strongloop/-/strongloop-2.7.1.tgz",
+  "readme": "ERROR: No README data found!"
+}
