@@ -43,11 +43,13 @@ Where:
 You can now try out the LoopBack sample application running on OpenShift: 
   
   View the LoopBack sample app at the indicated URL that looks like http://yourapp-<namespace>.rhcloud.com/. 
-  View the LoopBack API explorer at http://yourapp-<namespace>.rhcloud.com/explorer.
+  View the LoopBack API explorer at http://yourapp-<namespace>.rhcloud.com/explorer/.
+  The default app with the buildpack is a basic loopback app without any user defined models or datasources. To add functionality to your app refer to Getting Started with LoopBack.
+
 
 ## Deploying your own application to OpenShift
 
-If you created your own LoopBack application, follow these steps to deploy the app on OpenShift.
+If you created your own LoopBack application, follow these steps to replace the default app and deploy your app on OpenShift.
 
 1. Add a start command to your package.json and commit it-
         
@@ -66,11 +68,11 @@ If you created your own LoopBack application, follow these steps to deploy the a
 
     $rhc app show osapp |  grep Git 
 
-This will return something like this: 
+Copy the Git URL from the output:
 
     Git URL:    ssh://52a17af15004464d950003bd@openshiftapp-domain.rhcloud.com/~/git/openshiftapp.git/
 
-4. In your LoopBack app directory, enter this command, where `<remote_git_url>` is the URL returned above: 
+4. In your LoopBack app directory, enter this command, where `<remote_git_url>` is the Git URL from step 3.
 
     $ git remote add openshift <remote_git_url>
 
@@ -81,3 +83,4 @@ This will return something like this:
 That's it!  You can now check out your application at the app URL/domain you set for your OpenShift app.  
 If you have enabled StrongOps monitoring, log in to the StrongOps dashboard at http://strongops.strongloop.com and 
 you should be able to see your app.
+
