@@ -44,7 +44,7 @@ You can now try out the LoopBack sample application running on OpenShift:
   
   * View the LoopBack sample app at the indicated URL that looks like http://yourapp-<namespace>.rhcloud.com/. 
   * View the LoopBack API explorer at http://yourapp-<namespace>.rhcloud.com/explorer/.
-  * The default app with the buildpack is a basic loopback app without any user defined models or datasources. To add functionality to your app refer to Getting Started with LoopBack.
+  * The default app with the buildpack is a basic loopback app without any user defined models or datasources. To add functionality to your app refer to <a href="http://docs.strongloop.com/display/LB/Getting+Started+with+LoopBack">Getting Started with LoopBack.</a>
 
 
 ## Deploying your own application to OpenShift
