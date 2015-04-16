@@ -74,7 +74,7 @@ Copy the Git URL from the output:
 
 4. In your LoopBack app directory, enter this command, where `<remote_git_url>` is the Git URL from step 3.
 
-    $ git remote add openshift <remote_git_url>
+    $ git remote add openshift `<remote_git_url>`
 
 5. Deploy as follows:
 
